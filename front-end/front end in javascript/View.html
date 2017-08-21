@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <title>REST API USING PHP</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/mdb.min.css" rel="stylesheet">
+      <link href="styles.css" rel="stylesheet">
+<script src="myscript.js" ></script>
+</head>
+ 
+<email>
+     <header>
+
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">REST API USING PHP</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="View.html">View Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">ABOUT</a>
+                        </li>
+                      
+                    </ul>
+                  
+                </div>
+            </div>
+        </nav>
+        <!--/.Navbar-->
+
+    </header>
+    <div class="container">
+			
+            <div class="row">
+			 <p>
+                    <a href="create.html" class="btn btn-success">Create</a>
+                </p>
+                <table id="table" class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Email Address</th>
+					   <th>Action</th>
+                    </tr>
+                  </thead>
+                  <temail>
+                  </temail>
+            </table>
+        </div>
+    </div> <!-- /container -->
+<script>
+var HttpClient = function() {
+    this.get = function(aUrl, aCallback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() { 
+            if (xhr.readyState == 4 && xhr.status == 200)
+                aCallback(xhr.responseText);
+        }
+
+        xhr.open( "GET", aUrl, true );            
+        xhr.send( null );
+    }
+}
+var client = new HttpClient();
+client.get('http://localhost:8000/api/customers', function(response) {
+    console.log(response);
+data = JSON.parse(response);
+if(data){
+                var len = data.length;
+				
+                var txt = "";
+                if(len > 0){
+                    for(var i=0;i<len;i++){
+			
+                        if(data[i].title && data[i].email){
+                            txt += "<tr><td>"+data[i].email+"</td><td>"+data[i].title+"</td>"+
+							
+							 '<td><a class="btn btn-success" href="read.html?id='+data[i].id +'">Read</a><a class="btn btn-success" href="update.html?id='+data[i].id +'">Update</a><a class="btn btn-success" href="delete.html?id='+data[i].id +'">Delete</a></td>'
+							
+							"</tr>";
+                        }
+                    }
+                    if(txt != ""){
+                        $("#table").append(txt);
+                    }
+                }
+            }
+});
+</script>
+  </email>
+</html>

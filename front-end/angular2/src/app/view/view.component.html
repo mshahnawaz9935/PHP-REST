@@ -1,0 +1,27 @@
+<div class="container">
+			
+            <div class="row">
+			 <p>
+                    <a [routerLink]="['/create']" class="btn btn-success">Create</a>
+                </p>
+                <table id="table" class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Email Address</th>
+					              <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of data">
+                      <td>{{data.title}}</td>
+                      <td>{{data.email}}</td>
+                      <td><button class="btn btn-success" (click)="read(data.id)">READ</button>
+                      <button class="btn btn-success" (click)="update(data.id)">UPDATE</button>
+                      <button class="btn btn-success" (click)="delete(data.id)">DELETE</button></td>
+                      </tr>
+                  </tbody>
+
+            </table>
+        </div>
+    </div>

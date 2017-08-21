@@ -1,0 +1,12 @@
+  
+     <div class="container">  <form (ngSubmit)="onsubmit()">
+				  <label class="control-label">Email Address</label>
+				  <input class="form-control" type="text" required [(ngModel)]="model.email" id="name" name="body" placeholder="Email address">
+				  <label class="control-label">Name</label>
+				  <input class="form-control" type="text" required [(ngModel)]="model.title" id="title" name="title" placeholder="Name">
+				  <br>
+             <h3>{{updated}}</h3>
+          <button class="btn btn-lg btn-primary" type="submit" >UPDATE</button>
+           <button class="btn btn-lg btn-primary" [routerLink]="['/view']" >BACK</button>
+          </form>
+          </div>

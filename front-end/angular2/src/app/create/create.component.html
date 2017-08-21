@@ -1,0 +1,24 @@
+   <div class="container">
+                <br>
+                <div class="span10 offset1">
+                 
+                        <h3>Create a Article</h3>
+                   <br>
+         
+          <form (ngSubmit)="onsubmit()">
+				  <label class="control-label">Email Address</label>
+				  <input class="form-control" type="text" required [(ngModel)]="model.email" id="name" name="body" placeholder="Email address">
+				  <label class="control-label">Name</label>
+				  <input class="form-control" type="text" required [(ngModel)]="model.title" id="title" name="title" placeholder="Name">
+				  <br>
+             <h3>{{created}}</h3>
+          <button class="btn btn-lg btn-primary" type="submit" >CREATE</button>
+          </form>
+             
+                  <br>
+               
+				  <div class="row">
+						  <a class="btn btn-lg btn-primary"  [routerLink]="['/view']" >BACK</a>
+                    </div>
+					 </div>    
+    </div> 
